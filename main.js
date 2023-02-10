@@ -46,11 +46,12 @@ const calculateXPD = (x,y) => {
 
     return xpd;
 
-    console.log(xpd);
 }
 
 const updateData = (xpd) => {
-    XpDifference.innerHTML = Math.round(xpd);
+
+    XpDifference.innerHTML = xpd.toLocaleString("en-US");
+
 }
 
 const refreshInputValues = () => {
