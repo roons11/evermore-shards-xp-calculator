@@ -4,8 +4,8 @@ body{
 
 .xp-calculator {
     font-family: sans-serif;
-    width: 200;
-    margin: 240px;
+    width: 450px;
+    margin: 240px,auto;
     background: #fff;
     box-shadow: 0 12px 50px -11px rgba(0,0,0,0.2);
     border-radius: 8px;
@@ -78,4 +78,16 @@ body{
     font-weight: 900;
     cursor: pointer;
     margin: 24px 0;
+}
+
+@media (max-width: 950px) {
+    .xp-calculator {
+        width: 50%;
+        max-width: 750px;
+    }
+
+    .xp-calculator form {
+        flex-direction: column;
+        gap: 20px;
+    }
 }
