@@ -81,14 +81,14 @@ const checkValues = () => {
         alert("STOP! Dividing by 0 destroys the universe!");
     }
 
-    if(currentLvlvalue > 400 || targetLvlvalue > 400) {
+    if(currentLvlvalue >= 400 || targetLvlvalue > 400) {
         currentLvlInput.value = "0";
         targetLvlInput.value = "1";
         alert("If you are actually aiming for this level you are spending too much time gaming");
     }
 
     if(targetLvlvalue <= currentLvlvalue) {
-        targetLvlInput.value = Math.abs(currentLvlvalue - currentLvlvalue - currentLvlvalue - 1);
+        targetLvlInput.value = Math.abs(currentLvlvalue) + 1;
         if(currentLvlInput.value < 0) {
             currentLvlInput.value = "0";
             targetLvlInput.value = "1";
@@ -106,7 +106,9 @@ const refreshInputValues = () => {
 const inti = () => {
     let xpd = calculateXPD();
     if(xpd < 0){
+        checkValues();
         XpDifference.innerHTML = "Error: Current XP too high";
+        CraftDifference.innerHTML = "N/A";
     }else{
         updateData(xpd,crafttXPInput.value);        
     }
