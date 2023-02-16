@@ -20,7 +20,10 @@ body{
 .xp-calculator .top {
     background: #14213d;
     color: #fff;
-    padding: 32px;
+    padding-top: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 20px;
 }
 
 .xp-calculator .top h2 {
@@ -34,12 +37,13 @@ body{
 
 .xp-calculator form2 {
     display: inline-block;
+    width: 53%;
 }
 
 .xp-calculator form2 input{
     font-size: 20px;
     padding: 8px 24px;
-    width: 207px;
+    width: 100%;
 }
 
 .xp-calculator .title{
@@ -106,7 +110,7 @@ body{
     font-size: 17px;
     font-weight: 900;
     cursor: pointer;
-    margin-left: 22px;    
+    margin-left: 22px;  
 }
 
 @media (max-width: 950px) {
@@ -117,6 +121,19 @@ body{
 
     .xp-calculator form {
         flex-direction: column;
-        gap: 20px;
+        gap: 0px;
     }
+
+    .xp-calculator form2 {
+        display: block;
+        width: 100%;
+    }
+
+    .xp-calculator .calculate-btn {
+        margin-top: 15px; 
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
 }
