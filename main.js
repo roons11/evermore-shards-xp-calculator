@@ -72,12 +72,12 @@ const checkValues = () => {
     }
 
     if(!craftXPvalue.match(regexNumber)) {
-        crafttXPInput.value = "1";
+        crafttXPInput.value = "48";
         alert("Why are you trying to break my calculator?");
     }
 
     if(craftXPvalue < 1) {
-        crafttXPInput.value = "1";
+        crafttXPInput.value = "48";
         alert("STOP! Dividing by 0 destroys the universe!");
     }
 
