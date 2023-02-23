@@ -16,18 +16,19 @@
             <form action="">
                 <div class="group">
                     <div class="title"> Current level</div>
-                    <input type="text" value ="0" class="current-lvl">
+                    <input type="number" value ="0" class="current-lvl" min="0" onkeypress='return event.charCode>=48 && event.charCode<=57'/>
                 </div>
 
                 <div class="group">
                     <div class="title"> Target level</div>
-                    <input type="text" value ="1" class="target-lvl">
+                    <input type="number" value ="1" class="target-lvl" min="0" onkeypress='return event.charCode>=48 && event.charCode<=57'/>
                 </div>              
                 
                 <div class="group">
                     <div class="title"> Current XP</div>
-                    <input type="text" value ="0" class="current-xp">
-                </div>         
+                    <input type="number" value ="0" class="current-xp" min="0" onkeypress='return event.charCode>=48 && event.charCode<=57'/>
+                </div>  
+                
             </form>
 
             <div class="top2">
@@ -35,7 +36,7 @@
                 <form2 action="">
                     <div class="group2">
                         <div class="title"> XP per craft</div>
-                        <input type="text" value ="48" class="craft-xp">
+                        <input type="number" value ="48" class="craft-xp" min="1" onkeypress='return event.charCode>=48 && event.charCode<=57'/>
                     </div>                  
                 
                 </form2>         

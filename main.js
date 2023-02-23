@@ -13,7 +13,6 @@ let targetLVL = parseFloat(targetLvlInput.value);
 let currentXP = parseFloat(currentXPInput.value);
 let craftXP = parseFloat(crafttXPInput.value);
 
-
 const calculateXPD = (x,y,z) => {
     checkValues();
     refreshInputValues();
@@ -28,7 +27,7 @@ const calculateXPD = (x,y,z) => {
 
     // Initiating loop to iterate
     // for inputs
-    for (var i = 0; i < y+1; i++) { 
+    for (var i = x+1; i < y+1; i++) { 
   
         // Feeding integer inputs to array
         arr[i] = Math.floor(200 * (i ** (1 + i/100)));
@@ -39,18 +38,7 @@ const calculateXPD = (x,y,z) => {
         }, 0)
     }
 	
-	for (var i = 0; i < x+1; i++) { 
-  
-        // Feeding integer inputs to array
-        cur[i] = Math.floor(200 * (i ** (1 + i/100)));
-          
-        // Calculate sum of array elements
-        var dum = cur.reduce(function (a, b) {
-            return a + b;
-        }, 0)
-    }	
-	
-    let xpd = sum - dum - z;
+    let xpd = sum - z;
 
     return xpd;
 
@@ -62,37 +50,22 @@ const checkValues = () => {
     let currentXPvalue = currentXPInput.value;
     let craftXPvalue = crafttXPInput.value;
 
-    let regexNumber = /^[0-9]+$/;
-
-    if(!currentLvlvalue.match(regexNumber) || !targetLvlvalue.match(regexNumber) || !currentXPvalue.match(regexNumber)) {
-        currentLvlInput.value = "0";
-        targetLvlInput.value = "1";
-        currentXPInput.value = "0";
-        alert("Why are you trying to break my calculator?");
-    }
-
-    if(!craftXPvalue.match(regexNumber)) {
-        crafttXPInput.value = "48";
-        alert("Why are you trying to break my calculator?");
-    }
-
-    if(craftXPvalue < 1) {
-        crafttXPInput.value = "48";
-        alert("STOP! Dividing by 0 destroys the universe!");
-    }
-
-    if(currentLvlvalue >= 400 || targetLvlvalue > 400) {
-        currentLvlInput.value = "0";
-        targetLvlInput.value = "1";
-        alert("If you are actually aiming for this level you are spending too much time gaming");
-    }
-
-    if(targetLvlvalue <= currentLvlvalue) {
+    if(Math.abs(targetLvlvalue) <= Math.abs(currentLvlvalue)) {
         targetLvlInput.value = Math.abs(currentLvlvalue) + 1;
         if(currentLvlInput.value < 0) {
             currentLvlInput.value = "0";
             targetLvlInput.value = "1";
         }
+    }
+
+    if(craftXPvalue < 1) {
+        crafttXPInput.value = "1";
+    }  
+
+    if(currentLvlvalue >= 400 || targetLvlvalue > 400) {
+        currentLvlInput.value = "0";
+        targetLvlInput.value = "1";
+        alert("If you are actually aiming for this level you are spending too much time gaming");
     }
 
 }
@@ -124,4 +97,41 @@ const updateData = (xpd,xpc) => {
 
 inti();
 
+/*
 calculateBtn.addEventListener("click", inti);
+*/
+
+const myCurrent = document.querySelector('input[class="current-lvl"]');
+const myTarget = document.querySelector('input[class="target-lvl"]');
+const myXP = document.querySelector('input[class="current-xp"]');
+const myCraft = document.querySelector('input[class="craft-xp"]');
+
+myCurrent.addEventListener("input", (e) => {
+  inti();
+});
+
+myTarget.addEventListener("change", (e) => {
+    
+    let currentLvlvalue = currentLvlInput.value;
+    let targetLvlvalue = targetLvlInput.value;
+
+    if(Math.abs(targetLvlvalue) <= Math.abs(currentLvlvalue)) {
+        currentLvlInput.value = Math.abs(targetLvlvalue) - 1;
+        if(currentLvlInput.value < 0) {
+            currentLvlInput.value = "0";
+            targetLvlInput.value = "1";
+        }
+    }
+
+    inti();
+});
+
+myXP.addEventListener("input", (e) => {
+  inti();
+});
+
+myCraft.addEventListener("input", (e) => {
+    inti();
+});
+
+  
